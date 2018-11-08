@@ -25,7 +25,7 @@
        <span class='s-left'>学历：本科</span><span class="s-right">邮箱: 1501587673@qqcom</span>
     </li>
     <li>
-       <span class='s-left'>专业：信息工程</span><span class="s-right">电话: 13585707986</span>
+       <span class='s-left'>专业：信息工程</span><span class="s-right">电话: 13558707986</span>
     </li>
     <li>
         <span class='s-left'>学校：西南林业大学</span> <span class="s-right">github:https://github.com/yanghj7425</span>

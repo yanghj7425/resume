@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>javadeveloper.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<style>
+.s-right{
+    width:100%
+    float:right;
+    margin-right:0px;
+   
+}
+
+.s-left{
+    float:left;
+    width: 300px;
+    
+}
+</style>
+<h1 id="%E6%9D%A8%E6%B4%AA%E7%AB%9E-sub-hongjing-yangsub">杨洪竞 <sub>/ Hongjing Yang</sub></h1>
+<h2 id="java-%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88">Java 开发工程师</h2>
+ <span> 
+ 关于我
+  <ul>
+    <li>
+       <span class='s-left'>学历：本科</span><span class="s-right">邮箱: 1501587673@qqcom</span>
+    </li>
+    <li>
+       <span class='s-left'>专业：信息工程</span><span class="s-right">电话: 13558707986</span>
+    </li>
+    <li>
+        <span class='s-left'>学校：西南林业大学</span> <span class="s-right">github:https://github.com/yanghj7425</span>
+    </li>
+     <li>
+        <span class='s-left'>最后更新日期：2020-09-28</span>
+    </li>
+  </ul>
+</span>
+<h3 id="%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD">个人技能</h3>
+<ul>
+    <li> Java：Spring MVC、security、mybatis、MQ、Spring 框架、读过 Spring 源码</li>
+    <li> 熟悉liunx 命令：能编写 Shell 脚本编写</li>
+    <li> python：可以编写一些处理数据的脚本，刷刷数据</li>
+    <li> 数据库：熟悉 MySQL、SQL 优化</li>
+</ul>
+<h3 id="%E5%85%B6%E4%BB%96">其他</h3>
+<p>9 月第刚参加完 PMP 的考试。<br>
+平时看过几本 IT 技能类的书，如：《重构》、《设计模式》、《Effective java》、《Think in Java》、《Spring 实战》、《高性能 MySQL》、《Java 高并发设计》、《深入分析 Java Web》等书。喜欢在项目中使用重构技巧和设计模式，如：策略、工厂等。第一意愿还是比较想走技术流。有 c、python 和 java 的项目经历。<br>
+其他非 IT 类的，如：《幕后产品》、《战争哀歌》、《祈祷落幕时》、《罪与罚》，还有三毛的好几本。还玩儿了一段时间手语，不过全忘了现在……
+<br></p>
+<h4 id="%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7">常用工具</h4>
+<ul>
+<li>PostMan: 测试接口</li>
+<li>svn、git: 版本控制</li>
+<li>markdown: 编写文档，这份简历就是 markdown 编写</li>
+</ul>
+<h3 id="%E5%B7%A5%E4%BD%9C%E7%BB%8F%E5%8E%86">工作经历</h3>
+<h4 id="span-classs-left%E4%B8%8A%E6%B5%B7%E6%A2%A6%E5%88%9B%E5%8F%8C%E6%9D%A8%E6%95%B0%E6%8D%AE%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8-span-span-classs-right20184---%E4%BB%8Aspan"><span class='s-left'>上海梦创双杨数据科技股份有限公司 </span> <span class='s-right'>2018/4 - 今</span></h4>
+<blockquote>
+<p>在这个公司呆的时间比较久，有做了几个项目大致分为两类：</p>
+</blockquote>
+<ol>
+<li>
+<p>A 类</p>
+<ul>
+<li>浦东一期、二期，红网二期、翔宇航空、浦东区委智慧校园、江西纪检、战略项目</li>
+</ul>
+</li>
+<li>
+<p>B 类</p>
+<ul>
+<li>网上社区、考试系统、内部邮件，这三个项目是一些独立的项目，往往在业务场景内接入 A 类项目中，也可独立发布部署。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>历程</p>
+</blockquote>
+<ul>
+<li>在公司前期主要已开发者的角色参与项目，后面带项目就多了一些需求讨论、系统分析、团队管理这类的工作。</li>
+</ul>
+<h4 id="span-classs-left%E5%9B%9B%E5%B7%9D%E4%B9%85%E8%BF%9C%E9%93%B6%E6%B5%B7%E8%BD%AF%E4%BB%B6%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8span-span-class%22s-right%22201611-2018331span"><span class='s-left'>四川久远银海软件股份有限公司</span> <span class="s-right">2016/11-2018/3/31</span></h4>
+<ul>
+<li>
+<p>项目名称：网上申报</p>
+<ul>
+<li><em>项目简介</em>：单位人员发生变动时提供社保相关功能的停保和续保.</li>
+<li><em>我的职责</em>：业务比较复杂、查询类功能、单位批量参保信息导入/导出、重做登录权限模块和功能授权模块。有的功能都是 Java -&gt; ibaits -&gt; 存储过程（ORACLE）-&gt; dblink 这个流程；有的是走 webService 。</li>
+</ul>
+</li>
+<li>
+<p>项目名称: 自助查询一体机</p>
+<ul>
+<li><em>项目简介</em>: 提供社保业务的查询,和社保卡的挂失,相关证明打印</li>
+<li><em>我的职责</em>: 润乾报表打印、本地化配置、登陆还有一些查询功能。</li>
+</ul>
+</li>
+</ul>
+<h4 id="span-classs-left-%E4%BA%91%E5%8D%97%E8%BF%99%E9%87%8C%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8-spanspan-class%22s-right%2220169-201611span"><span class='s-left'> 云南这里信息技术有限公司 </span><span class="s-right">2016/9-2016/11</span></h4>
+<ul>
+<li>项目名称 : 档案定位
+<ul>
+<li><em>项目简介</em> : 通过传感器,标记每个位置的档案.若有档案被取走或者归还,则发送信号给嵌入式设备,嵌入式设备通过网关把数据发送到服务器,由服务器入库.然后网页显示档案信息.</li>
+<li><em>我的职责</em> : 信息采集电路设计,C 语言实现对采集到的信号进行解析并发送到网关,Java 通过 Spring 的 Executor 按约定的时间采集数据存入 MySQL.</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86">项目经历</h3>
+<h4 id="%E6%88%98%E7%95%A5%E9%A1%B9%E7%9B%AE">战略项目</h4>
+<p>这个项目时和华为合作的一个，现在正在进行的项目。</p>
+<ul>
+<li>职责：需求讨论、系统分析、团队管理、定义接口标准，业务接口实现。</li>
+</ul>
+<h4 id="%E7%BF%94%E5%AE%87%E8%88%AA%E7%A9%BA">翔宇航空</h4>
+<p>学历制教育培训，总的有 13 个模块：教务、招生/迎新、学籍、学工、党建、缴费、人事等。</p>
+<ul>
+<li>职责：需求讨论、系统分析、团队管理、定义接口标准，业务接口实现。</li>
+</ul>
+<h4 id="%E6%B5%A6%E4%B8%9C%E5%8C%BA%E5%A7%94%E6%99%BA%E6%85%A7%E6%A0%A1%E5%9B%AD%E6%B1%9F%E8%A5%BF%E7%BA%AA%E6%A3%80">浦东区委智慧校园、江西纪检</h4>
+<p>这两是一类项目，业务类型一样，具体实现细节和数据流上有差别。</p>
+<ul>
+<li>职责：需求讨论、系统分析、团队管理、定义接口标准，业务接口实现。</li>
+</ul>
+<h4 id="%E8%80%83%E8%AF%95%E7%B3%BB%E7%BB%9F">考试系统</h4>
+<p>线上考试系统，题库、试卷库、题型、答案、出题、乱序规则、自动判题、防作弊等。</p>
+<ul>
+<li>职责：业务接口实现、库表设计</li>
+</ul>
+<h4 id="%E7%BD%91%E4%B8%8A%E7%A4%BE%E5%8C%BA%E5%86%85%E9%83%A8%E9%82%AE%E4%BB%B6">网上社区、内部邮件</h4>
+<p>这两项目是我做完第一版试用没明显问题，就提交上去了。后面偶尔有点儿其他项目接入时的定制化需求。</p>
+<ul>
+<li>网上社区：这个项目说简单了就是一个 BBS。</li>
+<li>内部邮件：仿照 QQ 邮箱做的，包含收发邮件的必要功能。</li>
+</ul>
+<h4 id="%E7%BA%A2%E7%BD%91%E4%BA%8C%E6%9C%9F">红网二期</h4>
+<p>这个项目全是泪，去杭州出差！肝了 8 个月，回成都有干了个把月。</p>
+<ul>
+<li>职责:业务接口实现、平台接口实现</li>
+</ul>
+<h4 id="%E6%B5%A6%E4%B8%9C%E4%B8%80%E6%9C%9F%E4%BA%8C%E6%9C%9F">浦东一期、二期</h4>
+<ul>
+<li>
+<p><em>重新做了审核流程</em>: 把审核流程单独抽象成模块，其他模块可直接调用接口。修改之后若某一个流程出现按问题，可以直接定位到某一个方法，而不是像以前一样要从前端开始，步骤如下：</p>
+<ol>
+<li>先看前端先是调的那个接口（因为前端的 HTML 是动态的，同一个列表里面的单击事件会调用不同的接口）</li>
+<li>数据进了那个表</li>
+<li>查的时候是怎么查的 <br></li>
+</ol>
+</li>
+<li>
+<p><em>解决了积分数据在批量的时候会出现相同数据的问题</em>: 这个 bug 是我觉得比较好的一个 bug，因为别人没找到我找到了。原因就是：Innodb 事务可见性和锁的范围的问题。在这个 bug 没有被发现之前是通过存储过程 + mysql 定时来批量修改积分数据的。理论上存储过程更接近 MySQL 效率更高，前提是不锁表！后面用我 python 改写了存储过程（本来就不推荐用存储过程更何况我司用的 MySql）用 python 改写了之后 30 个线程，以前七八个小时的事情现在 50 分钟左右。原因很简单，千万级的数据再加上锁表。其实现在还有一部分是锁表的过程，因为生成数据和维护数据都是存储过程，只改写了维护的部分。</p>
+</li>
+<li>
+<p><em>bug 修改</em>：在我司项目都是 copy 其他项目的代码，然后各种 if 。新建了分支后，遇到这种情况就是重构这个业务功能。</p>
+</li>
+<li>
+<p><em>docker 测试环境</em>：我司的项目采用的是直接提交各自的 .class 文件到 SVN 然后更新到服务器测试。虽然有一个测试环境，但是公司内部好像趋向于让直接提交给用户，让用户测试。这样的问题是：在多节点的情况下要一台一台的检查，很麻烦。采用 docker 后就可以避免这些问题。</p>
+</li>
+</ul>
+<h4 id="%E7%BD%91%E4%B8%8A%E7%94%B3%E6%8A%A5">网上申报</h4>
+<ul>
+<li>这个项目是 10 多年的老项目了（存储过程的注释有写日期），主要学的就是业务，重新封装了框架的 POI，原来的对于这个项目不太灵活（与业务耦合性太高），封装后导入/导出对于不同的表单只需在实体类上添加相应的注解。</li>
+<li>重做登陆和权限模块模块: Spring Security 做的权限。通过修改用户组和角色表，达到给用户默认权限以及灵活的控制权限。主要是用户的管理员有很多是老党员，不太擅长操作电脑。所以要重做，主要是数据清理和提供默认权限。系统升级前的老数据用 PL/SQL 程序调整。值得一提的是，有个经办人给我们组送了一筐李子（心里特美）。</li>
+</ul>
+<h4 id="%E8%87%AA%E5%8A%A9%E6%9F%A5%E8%AF%A2%E4%B8%80%E4%BD%93%E6%9C%BA">自助查询一体机</h4>
+<ul>
+<li>是 N 手项目也是试点项目。几乎是驻场开发，第一版的时候主要负责润乾报表打印、登陆、日志记录、电子证明下载。用户打印已签章的证明后，电子原件上传 FTP 并记录操作日志，其中润乾报表重构了数据解析引擎。</li>
+<li>第二版主要是重构 Java 代码，根据不同类型的功能划分后台代码模块。优化代码提高可扩展性:实现不同区域的设备配置不同的功能。抽象接口，增加代码可维护性。</li>
+<li>还是有很多用户，每个人当需要跟社保、医保相关的证明都需要打印。</li>
+</ul>
+<h3 id="span-classs-left-%E5%9C%A8%E6%A0%A1%E6%9C%9F%E9%97%B4span-span-class%22s-right%222014-2017span"><span class='s-left'> 在校期间</span> <span class="s-right">2014-2017</span></h3>
+<ul>
+<li>大二进了学院实验室(主要是嵌入式方向，编程语言 C、python、java、c#，主要还是 C 和 Java)、参加了几个比赛（全国大学生电子设计大赛、计算机作品大赛、物联网设计大赛）</li>
+<li>跟学长在学院机房弄了 openstack，预想的是以后机房的主机都不用硬盘，只用内存。数据存在 openstack 节点中，但是没实现只能用来跑跑数据。</li>
+<li>帮土木工程学院做了门户网站（两人合作）、贪吃蛇、捕鱼达人、五子棋、俄罗斯方块(C 语言)、摇摇棒、调频发射器、调频收音机、光立方、智能小车。</li>
+<li>毕业设计做的 《基于 Spark 的语言语言情感分析》，本想毕业做大数据相关的，但是理论不够。</li>
+</ul>
+
+</body>
+</html>
